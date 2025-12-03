@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from upload import router as upload_router
 app = FastAPI(
     title="OBOS Intelligence Backend",
     description="Backend API for the OBOS Agentic AI Operating System",
     version="1.0.0",
 )
-
+app.include_router(upload_router, prefix="/api")
 # Allow frontend to connect later
 app.add_middleware(
     CORSMiddleware,
